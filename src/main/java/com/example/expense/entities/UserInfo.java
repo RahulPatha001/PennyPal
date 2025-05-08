@@ -11,18 +11,13 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
-@Entity
-@Getter
-@Setter
+ @Entity
 @ToString
 @AllArgsConstructor
+@Data
+@Builder
 @NoArgsConstructor
 @Table(name = "users")
 public class UserInfo {
@@ -40,7 +35,49 @@ public class UserInfo {
 			inverseJoinColumns = @JoinColumn(name = "role_id")
 			)
 	private Set<UserRole> roles = new HashSet<>();
-	
-	
+
+//	public String getUserId() {
+//		return userId;
+//	}
+//
+//	public void setUserId(String userId) {
+//		this.userId = userId;
+//	}
+//
+//	public String getUsername() {
+//		return username;
+//	}
+//
+//	public void setUsername(String username) {
+//		this.username = username;
+//	}
+//
+//	public String getPassword() {
+//		return password;
+//	}
+//
+//	public void setPassword(String password) {
+//		this.password = password;
+//	}
+//
+//	public Set<UserRole> getRoles() {
+//		return roles;
+//	}
+//
+//	public void setRoles(Set<UserRole> roles) {
+//		this.roles = roles;
+//	}
+//
+//	public UserInfo(String userId, String username, String password, Set<UserRole> roles) {
+//		super();
+//		this.userId = userId;
+//		this.username = username;
+//		this.password = password;
+//		this.roles = roles;
+//	}
+//	
+//	public UserInfo() {
+//		
+//	}
 
 }
