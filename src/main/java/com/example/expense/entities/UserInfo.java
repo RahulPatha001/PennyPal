@@ -13,11 +13,14 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Data
+@Getter
+@Setter
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
