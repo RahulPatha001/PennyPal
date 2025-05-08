@@ -26,29 +26,5 @@ public class UserRole {
 	
 	private String name;
 
-	public Long getRoleId() {
-		return roleId;
-	}
 
-	public void setRoleId(Long roleId) {
-		this.roleId = roleId;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public UserRole(Long roleId, String name) {
-		super();
-		this.roleId = roleId;
-		this.name = name;
-	}
-	
-	public UserRole() {
-		
-	}
 }
