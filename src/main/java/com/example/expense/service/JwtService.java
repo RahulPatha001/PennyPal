@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
@@ -22,7 +23,7 @@ public class JwtService {
         return extractClaim(token, Claims::getSubject);
     }
 
-    public Boolean validateUser(String token, UserDetails userDetails){
+    public Boolean validateToken(String token, UserDetails userDetails){
         final String userName = extractUsername(token);
         return (userName.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
@@ -50,6 +51,11 @@ public class JwtService {
                 .issuedAt(new Date(System.currentTimeMillis()))
                 .expiration(new Date(System.currentTimeMillis()+ 1000*60*30))
                 .and().signWith(getSignKey(), SignatureAlgorithm.HS256).compact();
+    }
+
+    public String GenerateToken(String username){
+        Map<String, Object> claims = new HashMap<>();
+        return createToken(claims, username);
     }
 
     private SecretKey getSignKey(){
