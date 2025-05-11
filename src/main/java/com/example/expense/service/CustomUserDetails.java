@@ -1,8 +1,12 @@
 package com.example.expense.service;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
+import com.example.expense.entities.UserRole;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.example.expense.entities.UserInfo;
@@ -15,7 +19,12 @@ public class CustomUserDetails extends UserInfo implements UserDetails {
 	Collection<? extends GrantedAuthority> authorities; 
 	
 	public CustomUserDetails(UserInfo byUserName) {
-
+		this.username = byUserName.getUsername();
+		this.password = byUserName.getPassword();
+		List<GrantedAuthority> auths = new ArrayList<>();
+		for(UserRole role: byUserName.getRoles()){
+			auths.add(new SimpleGrantedAuthority(role.getName().toUpperCase()));
+		}
 		
 	}
 
