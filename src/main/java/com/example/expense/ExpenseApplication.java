@@ -8,7 +8,8 @@ public class ExpenseApplication {
 
 	public static void main(String[] args) {
 
-		System.out.println("hi");
+		SpringApplication.run(ExpenseApplication.class, args);
 	}
+
 
 }

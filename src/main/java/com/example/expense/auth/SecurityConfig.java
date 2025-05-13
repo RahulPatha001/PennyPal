@@ -3,6 +3,7 @@ package com.example.expense.auth;
 
 import com.example.expense.repository.UserRepository;
 import com.example.expense.service.UserDetailsServiceImpl;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,19 +28,14 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableMethodSecurity
 @Getter
 @Setter
+@Builder
 public class SecurityConfig {
 
     @Autowired
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    private UserDetailsServiceImpl userDetailsServiceImpl;
-
-    @Bean
-    @Autowired
-    public UserDetailsService userDetailsService(UserRepository userRepository, PasswordEncoder passwordEncoder){
-        return new UserDetailsServiceImpl(userRepository, passwordEncoder);
-    }
+    private final UserDetailsServiceImpl userDetailsServiceImpl;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http, JwtAuthFilter jwtAuthFilter) throws Exception{
