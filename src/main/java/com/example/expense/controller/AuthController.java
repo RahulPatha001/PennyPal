@@ -38,6 +38,7 @@ public class AuthController {
 
     @PostMapping("auth/v1/signup")
     public ResponseEntity SignUp(@RequestBody UserInfoDto userInfoDto){
+        System.out.println(userInfoDto);
         try {
             Boolean isUserSignedUp = userDetailsService.signupUser(userInfoDto);
             if(Boolean.FALSE.equals(isUserSignedUp)){

@@ -52,6 +52,6 @@ public class TokenController {
                     String accessToken = jwtService.GenerateToken(userInfo.getUsername());
                     return JwtResponseDto.builder().accessToken(accessToken).token(refrestTokenRequestDto.getToken())
                             .build();
-                }).orElseThrow(()-> new RuntimeException("Token not in Data Base")); 
+                }).orElseThrow(()-> new RuntimeException("Token not in Data Base"));
     }
 }

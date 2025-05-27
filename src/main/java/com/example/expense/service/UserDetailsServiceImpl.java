@@ -42,14 +42,15 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         return userRepository.findByUsername(user.getUserName());
     }
 
-    public Boolean signupUser(UserInfoDto user){
-        // add a validation to check if user email and password are strong
-        user.setPassoword(passwordEncoder.encode(user.getPassoword()));
-        if(Objects.nonNull(checkIfUserIsPresent(user))){
+    public Boolean signupUser(UserInfoDto userInfoDto){
+        //        ValidationUtil.validateUserAttributes(userInfoDto);
+        userInfoDto.setPassword(passwordEncoder.encode(userInfoDto.getPassword()));
+        if(Objects.nonNull(checkIfUserIsPresent(userInfoDto))){
             return false;
         }
         String userId = UUID.randomUUID().toString();
-        userRepository.save(new UserInfo(userId, user.getUserName(), user.getPassoword(), new HashSet<>()));
+        userRepository.save(new UserInfo(userId, userInfoDto.getUsername(), userInfoDto.getPassword(), new HashSet<>()));
+        // pushEventToQueue
         return true;
     }
 }
