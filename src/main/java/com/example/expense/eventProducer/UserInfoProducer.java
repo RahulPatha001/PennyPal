@@ -12,19 +12,19 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserInfoProducer {
 
-    private final KafkaTemplate<String, UserInfoDto> kafkaTemplate;
+    private final KafkaTemplate<String, UserInfoEvent> kafkaTemplate;
 
-    @Value("${spring.kafka.topic,name}")
+    @Value("${spring.kafka.topic.name}")
     private String topicName;
 
     @Autowired
-    UserInfoProducer(KafkaTemplate<String, UserInfoDto> kafkaTemplate){
+    UserInfoProducer(KafkaTemplate<String, UserInfoEvent> kafkaTemplate){
         this.kafkaTemplate = kafkaTemplate;
     }
 
-    public void SendEventToKafka(UserInfoDto userInfoDto){
-        Message<UserInfoDto> message = MessageBuilder
-                .withPayload(userInfoDto).setHeader(KafkaHeaders.TOPIC, topicName).build();
+    public void SendEventToKafka(UserInfoEvent userInfoEvent){
+        Message<UserInfoEvent> message = MessageBuilder
+                .withPayload(userInfoEvent).setHeader(KafkaHeaders.TOPIC, topicName).build();
         kafkaTemplate.send(message);
     }
 }
