@@ -10,6 +10,7 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class UserInfoDto extends UserInfo {
 
     private String userName;
