@@ -15,6 +15,8 @@ import lombok.*;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UserInfoDto extends UserInfo {
 
+    private String userName;
+
     @NonNull
     private String firstName; // first_name
 
