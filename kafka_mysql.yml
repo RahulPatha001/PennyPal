@@ -32,7 +32,7 @@ services:
       MYSQL_USER: test
       MYSQL_PASSWORD: Rahul.123*
     ports:
-      - 3306:3306
+      - 3307:3306
     volumes:
       - mysql-db:/var/lib/mysql
 
